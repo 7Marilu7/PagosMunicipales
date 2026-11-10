@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_background"
+    android:fitsSystemWindows="true">
+
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color_primary"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="Pago de Multas"
+        android:elevation="4dp">
+
+        <ImageView
+            android:id="@+id/btnHome"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_profile"
+            android:background="@drawable/circle_background"
+            android:padding="8dp"
+            android:visibility="gone" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Título -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Consulta de Multas"
+                android:textColor="@color/color_primary"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Subtítulo -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingresa el folio de tu multa"
+                android:textColor="@color/color_text_secondary"
+                android:textSize="14sp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Card de Búsqueda -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <!-- Campo Folio -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputFolio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="24dp"
+                        app:hintTextColor="@color/color_primary"
+                        app:boxStrokeColor="@color/color_primary"
+                        app:endIconTint="@color/color_primary"
+                        app:endIconMode="clear_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextFolio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Folio de multa"
+                            android:inputType="text"
+                            android:textColor="@color/color_text_primary" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Botón Consultar -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnConsultar"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:text="Consultar"
+                        android:textSize="16sp"
+                        android:backgroundTint="@color/color_primary"
+                        app:cornerRadius="28dp" />
+
+                    <!-- ProgressBar -->
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="24dp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card Resultado (INVISIBLE al inicio) -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardResultado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="24dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- Header con gradiente -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:background="@drawable/gradient_welcome"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Detalles de la Multa"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textFolioResultado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Folio: "
+                            android:textColor="@color/color_gold_light"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!-- Grid de información -->
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:rowCount="4"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:text="Infractor:"
+                            android:textColor="@color/color_text_secondary"
+                            android:textSize="14sp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:id="@+id/textInfractor"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:text=""
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:text="Placas:"
+                            android:textColor="@color/color_text_secondary"
+                            android:textSize="14sp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:id="@+id/textPlacas"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:text=""
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:text="Concepto:"
+                            android:textColor="@color/color_text_secondary"
+                            android:textSize="14sp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:id="@+id/textConcepto"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:text=""
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="14sp"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:text="Vehículo:"
+                            android:textColor="@color/color_text_secondary"
+                            android:textSize="14sp"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:id="@+id/textVehiculo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:text=""
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="14sp" />
+
+                    </GridLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_gold_light"
+                        android:layout_marginVertical="16dp" />
+
+                    <!-- Estado de la multa -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Estado:"
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textEstado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="@color/color_accent"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Monto a pagar -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Total a pagar:"
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textMontoPagar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="$0.00"
+                            android:textColor="@color/color_accent"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Fecha límite -->
+                    <TextView
+                        android:id="@+id/textFechaLimite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/color_text_secondary"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Botón Pagar -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnPagar"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:text="Pagar Multa"
+                        android:textSize="16sp"
+                        android:backgroundTint="@color/color_accent"
+                        app:cornerRadius="28dp"
+                        android:enabled="false" />
+
+                    <!-- NUEVO: Texto de fecha expirada -->
+                    <TextView
+                        android:id="@+id/textFechaExpirada"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="La fecha límite para pagar su multa ha expirado.\nComuníquese directamente con atención al cliente al:\n55-0908-5678"
+                        android:textColor="#FF0000"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:visibility="gone"
+                        android:layout_marginTop="8dp"
+                        android:background="#FFF0F0" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

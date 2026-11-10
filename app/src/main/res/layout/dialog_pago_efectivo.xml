@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/textTotalPagar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total a pagar: $0.00"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/color_primary"
+        android:layout_marginBottom="16dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:hintTextColor="@color/color_primary"
+        app:boxStrokeColor="@color/color_primary"
+        app:endIconTint="@color/color_primary"
+        app:endIconMode="clear_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editMontoRecibido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Monto recibido"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnCalcularCambio"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Calcular cambio"
+        android:backgroundTint="@color/color_primary"
+        android:layout_marginBottom="16dp" />
+
+    <LinearLayout
+        android:id="@+id/layoutCambio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textCambio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cambio: $0.00"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/color_accent"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnConfirmarPago"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Confirmar pago"
+            android:backgroundTint="@color/color_accent"
+            android:enabled="false" />
+    </LinearLayout>
+
+</LinearLayout>

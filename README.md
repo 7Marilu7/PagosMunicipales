@@ -25,17 +25,17 @@ La aplicación integra Firebase Authentication para la autenticación de usuario
 
 ## Tecnologías utilizadas
 
-- **Kotlin**
-- **Android Studio**
-- **XML**
-- **AndroidX**
-- **Material Components**
-- **ConstraintLayout**
-- **CardView**
-- **Firebase Authentication**
-- **Cloud Firestore**
-- **Gradle Kotlin DSL**
-- **Git y GitHub**
+- Kotlin
+- Android Studio
+- XML
+- AndroidX
+- Material Components
+- ConstraintLayout
+- CardView
+- Firebase Authentication
+- Cloud Firestore
+- Gradle Kotlin DSL
+- Git y GitHub
 
 ## Estructura del proyecto
 
